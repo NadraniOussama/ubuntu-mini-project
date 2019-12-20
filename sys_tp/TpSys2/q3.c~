@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(argc,argv)
+{
+int somme;
+if (argc <> 3) {printf("saisir 3 arguments");}
+somme = atoi(argv[1]) + atoi(argv[2]); 
+exit();
+return somme;
+}
+

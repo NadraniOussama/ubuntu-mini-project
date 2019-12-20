@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<string.h>
+#include<pthread.h>
+
+void *fonction_threads(void *thid){
+	float tid;
+	tid = (long)thid;
+	printf("Hello World! je suis thread %ld\n", (long)tid);
+	pthread_exit(NULL);
+}
+
+int main(){
+	pthread_t thread[7];
+	int rc;
+	long i;
+	for(i=0; i<7; i++){
+		printf("Creation thread %ld\n", i);
+		rc = pthread_create(&thread[i],NULL,fonction_threads,(void*)i);
+	}
+	if(rc){
+		printf("Error: code d'erreur de pthread_create() est %d",rc);
+		exit(0);
+	}
+	pthread_exit(NULL);
+}
+
